@@ -1,9 +1,10 @@
 package com.mitocode.service;
 
+import com.mitocode.dto.VentaDTO;
 import com.mitocode.model.Venta;
 
 public interface IVentaService extends ICRUD<Venta, Integer> {
 	
-//	Consulta registrarTransaccional(ConsultaListaExamenDTO dto) throws Exception;
+	Venta registrarTransaccional(VentaDTO dto) throws Exception;
 
 }
