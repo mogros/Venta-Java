@@ -1,7 +1,9 @@
 package com.mitocode.model;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.ForeignKey;
@@ -10,6 +12,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -30,6 +33,11 @@ public class Venta {
 	@Column(name = "importe", nullable = false)
 	private Double importe;
 
+	
+	@OneToMany(mappedBy = "venta", cascade = { CascadeType.ALL }, orphanRemoval = true)
+	private List<DetalleVenta> detalleVenta;
+
+	
 	public Integer getIdVenta() {
 		return idVenta;
 	}
@@ -60,6 +68,14 @@ public class Venta {
 
 	public void setImporte(Double importe) {
 		this.importe = importe;
+	}
+
+	public List<DetalleVenta> getDetalleVenta() {
+		return detalleVenta;
+	}
+
+	public void setDetalleVenta(List<DetalleVenta> detalleVenta) {
+		this.detalleVenta = detalleVenta;
 	}
 
 	
